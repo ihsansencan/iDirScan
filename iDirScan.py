@@ -4,6 +4,7 @@
 import requests
 import argparse
 import sys
+import datetime
 
 print('\033[93m'+"""
 ########################################
@@ -23,6 +24,7 @@ args = vars(arg.parse_args())
 
 def iDirScan():
     count =0
+    start = datetime.datetime.now()
     dosya = open(args["list"], "r", encoding="latin-1")
     listem = dosya.read()
     with open(args["list"], "r", encoding="latin-1") as f:
@@ -40,6 +42,8 @@ def iDirScan():
                 sys.stdout.write("Trying: "+str(count)+"\r")
                 sys.stdout.flush()
                 count+=1
+                finish = datetime.datetime.now()
+        print(25*"*"+"\nIt took "+ str(finish-start).split(".")[0] + " seconds in total.")
     except requests.exceptions.RequestException:
         print("\033[91m\033[1mCould not connect to the site !\033[0m : "+args["site"])
 try:
