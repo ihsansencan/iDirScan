@@ -1,5 +1,4 @@
 # # iDirScan
-* * *
 
 Simple but effective, open to improvement..
 
